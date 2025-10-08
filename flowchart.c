@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-
+#include "flowchart.h"
 // Queue node structure for flowchart steps
 typedef struct QNode {
     char step[100];
@@ -28,6 +28,33 @@ void displayQueue(QNode *head) {
         printf("%s\n", head->step);
         head = head->next;
     }
+}
+void displayFlowchart(int choice) {
+    QNode *head = NULL, *tail = NULL;
+
+    switch(choice) {
+        case 1: show_flowchart_gcd_iterative(&head, &tail); break;
+        case 2: show_flowchart_gcd_recursive(&head, &tail); break;
+        case 3: show_flowchart_prime_naive(&head, &tail); break;
+        case 4: show_flowchart_prime_optimized(&head, &tail); break;
+        case 5: show_flowchart_factorial_iterative(&head, &tail); break;
+        case 6: show_flowchart_factorial_recursive(&head, &tail); break;
+        case 7: show_flowchart_sum_digits_iterative(&head, &tail); break;
+        case 8: show_flowchart_sum_digits_recursive(&head, &tail); break;
+        case 9: show_flowchart_armstrong(&head, &tail); break;
+        case 10: show_flowchart_anagram(&head, &tail); break;
+        case 11: show_flowchart_first_nonrepeat(&head, &tail); break;
+        case 12: show_flowchart_remove_duplicates(&head, &tail); break;
+        case 13: show_flowchart_remove_duplicates_two_pointer(&head, &tail); break;
+        case 14: show_flowchart_second_largest(&head, &tail); break;
+        case 15: show_flowchart_second_largest_sorting(&head, &tail); break;
+
+        default:
+            printf("Invalid choice\n");
+            return;
+    }
+
+    displayQueue(head);
 }
 
 // =====================================
@@ -372,14 +399,3 @@ void show_flowchart_queue_two_stacks(QNode **h, QNode **t) {
 }
 
 // =====================================
-// Example usage
-// =====================================
-int main() {
-    QNode *head = NULL, *tail = NULL;
-
-    // Example: display flowchart for iterative GCD
-    show_flowchart_gcd_iterative(&head, &tail);
-    displayQueue(head);
-
-    return 0;
-}
